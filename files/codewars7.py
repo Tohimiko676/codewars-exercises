@@ -143,7 +143,31 @@ def DNA_strand_3(dna):
     # return dna.translate(str.maketrans("ATCG","TAGC"))
     # import string работает странно поэтому требует допиливания
 
+def maskify(cc):
+    result = ''
+    for i in range(0,len(cc)):
+        if i < len(cc)-4: result +='#'
+        else: result += cc[i]
+    return result
+
+def maskify_short(cc):
+    return "#"*(len(cc)-4) + cc[-4:]
+
+
+def find_short(s):
+    result = ''
+    for word in s.split():
+        if result:
+            if len(word)<len (result):
+                result = word
+        else:
+            result = word
+    return len(result)
+
+def find_short_generator(s):
+    return min(len(x) for x in s.split())
+
 # EXEC ----------------------------------------------------------
 
 
-print(DNA_strand_3("ATTGC"))
+print(find_short('ABC DEFG H'))

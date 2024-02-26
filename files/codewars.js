@@ -135,31 +135,64 @@ String.prototype.toJadenCase_or = function () {
 //Capitalize the string
 //странное требование через prototype this
 function toJadenCase(str) {
-  return str.split(' ').map((x) => x[0].toUpperCase()+x.slice(1)).join(' ')
+  return str
+    .split(" ")
+    .map((x) => x[0].toUpperCase() + x.slice(1))
+    .join(" ");
 }
 
 String.prototype.toJadenCase = function () {
-  return this.split(' ').map((x) => x[0].toUpperCase()+x.slice(1)).join(' ')
+  return this.split(" ")
+    .map((x) => x[0].toUpperCase() + x.slice(1))
+    .join(" ");
 };
 
-
-
-// EXEC ----------------------------------------
-function dnaStrand(dna){
-  
+function dnaStrand(dna) {
   pairs = {
-    'A': 'T',
-    'T': 'A',
-    'C': 'G',
-    'G': 'C'
-  }
+    A: "T",
+    T: "A",
+    C: "G",
+    G: "C",
+  };
 
   // return ''.join([pairs[x] for x in dna])
-  return dna.split('').map((x) => pairs[x]).join('')
-
+  return dna
+    .split("")
+    .map((x) => pairs[x])
+    .join("");
 }
 
+function maskify(cc) {
+  result = "";
+  for (let i = 0; i < cc.length; i++) {
+    if (i < cc.length - 4) {
+      result += "#";
+    } else {
+      result += cc[i];
+    }
+  }
+  return result;
+}
+
+// Разобрать регулярки и padStart
+function maskify_r1(cc) {
+  return cc.replace(/.(?=....)/g, '#');
+}
+
+function maskify_r2(cc) {
+  return cc.slice(0, -4).replace(/./g, '#') + cc.slice(-4);
+}
+
+function maskify_r3(cc) {
+  return cc.slice(-4).padStart(cc.length,'#')
+}
+
+//минимальное значение массива через оператор расширения ...
+function findShort(s){
+  let numbers = s.split(' ').map((x) => x.length)
+  return Math.min(...numbers);
+}
 
 // EXEC ----------------------------------------------------------------
 
-console.log(dnaStrand("ATTGC"));
+console.log(findShort("ATT GC h"));
