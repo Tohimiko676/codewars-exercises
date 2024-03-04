@@ -162,6 +162,7 @@ function dnaStrand(dna) {
     .join("");
 }
 
+// замена символов в строке
 function maskify(cc) {
   result = "";
   for (let i = 0; i < cc.length; i++) {
@@ -193,6 +194,47 @@ function findShort(s){
   return Math.min(...numbers);
 }
 
+
+// factorial
+function GetSum_test(a,b)
+{
+  return (Math.abs(a - b) + 1) * (a+b) / 2;
+}
+
+
+//sort reduce slice
+function sumTwoSmallestNumbers(numbers) {  
+  return numbers.sort((a, b) => a - b).slice(0,2).reduce((a, b)=> a+b)
+}
+
+
+function friend(friends){
+  for (let i = 0; i < friends.length; i++) {
+    if ((friends[i]).length  === 4) {
+      return false;
+    }
+  }
+  return true;
+}
+function accum1(s) {
+  return s
+    .split("")
+    .map((c, i) => c.toUpperCase() + c.toLowerCase().repeat(i))
+    .join("-");
+}
+
+// filter
+function accum(s) {
+  return s.filter((c) => c.length ===4)
+}
+
+// перевод set в массив. sort
+function longest(s1, s2) {
+  let a =new Set(s1 + s2)
+  let b = [...a]
+  return b.sort().join('')
+}
+
 // EXEC ----------------------------------------------------------------
 
-console.log(findShort("ATT GC h"));
+console.log(longest("xyaabbbccccdefww","xxxxyyyyabklmopq"));

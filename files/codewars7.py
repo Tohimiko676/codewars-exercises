@@ -138,36 +138,71 @@ def DNA_strand_2(dna):
 # через хитрожопую функцию translate python 3.4
 import string
 def DNA_strand_3(dna):
-    return dna.translate(string.maketrans("ATCG","TAGC"))
+    return dna.translate(string.maketrans("ATCG", "TAGC"))
     # Python 3.4 solution || you don't need to import anything :)
     # return dna.translate(str.maketrans("ATCG","TAGC"))
     # import string работает странно поэтому требует допиливания
 
+
 def maskify(cc):
     result = ''
-    for i in range(0,len(cc)):
-        if i < len(cc)-4: result +='#'
-        else: result += cc[i]
+    for i in range(0, len(cc)):
+        if i < len(cc) - 4:
+            result += '#'
+        else:
+            result += cc[i]
     return result
 
+
 def maskify_short(cc):
-    return "#"*(len(cc)-4) + cc[-4:]
+    return "#" * (len(cc) - 4) + cc[-4:]
 
 
 def find_short(s):
     result = ''
     for word in s.split():
         if result:
-            if len(word)<len (result):
+            if len(word) < len(result):
                 result = word
         else:
             result = word
     return len(result)
 
+
 def find_short_generator(s):
     return min(len(x) for x in s.split())
 
+
+def get_sum(a, b):
+    result = 0
+    m = min(a, b)
+    x = max(a, b)
+    while m != x:
+        result += m
+        m += 1
+    result += x
+    return result
+
+#нахождение факториала
+def get_sum_2(a, b):
+    return (a + b) * (abs(a - b) + 1) // 2
+
+
+def sum_two_smallest_numbers(numbers):
+    return sum(sorted(numbers)[:2])
+
+# sorted set
+def longest(a1, a2):
+    return ''.join(sorted(set(a + b)))
+
+def friend(x):
+    return [name for name in x if len(name)==4]
 # EXEC ----------------------------------------------------------
 
 
-print(find_short('ABC DEFG H'))
+print (friend(["Ryan", "Kieran", "Mark"]))
+
+
+
+
+
