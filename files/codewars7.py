@@ -197,10 +197,22 @@ def longest(a1, a2):
 
 def friend(x):
     return [name for name in x if len(name)==4]
+
+# if else в генераторе
+def open_or_senior(data):
+    return ['Senior' if n[0] >=55 and n[1]>7 else 'Open' for n in data]
+
+
+# проверка целое ли число
+def find_next_square(sq):
+    # Return the next square if sq is a square, -1 otherwise
+    return int(((sq**0.5)+1)**2) if sq**0.5%1==0 else -1
+
+
 # EXEC ----------------------------------------------------------
 
 
-print (friend(["Ryan", "Kieran", "Mark"]))
+print (find_next_square(121))
 
 
 

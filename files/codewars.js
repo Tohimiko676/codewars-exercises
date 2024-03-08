@@ -228,13 +228,43 @@ function accum(s) {
   return s.filter((c) => c.length ===4)
 }
 
-// перевод set в массив. sort
+// перевод set в массив распаковкой... sort
 function longest(s1, s2) {
   let a =new Set(s1 + s2)
   let b = [...a]
   return b.sort().join('')
 }
 
+
+//  ----------------------------------------------------------------
+function openOrSenior(data){
+  let result = []
+  for (let i = 0; i < data.length; i++) {
+    if (data[i][0]>55 && data[i][1]>7){
+      result.push('Senior')
+    } else {
+      result.push('Open')
+    } 
+}
+return result;
+}
+
+//Тернарный оператор + map
+function openOrSenior(data){
+  return data.map(([age, handicap]) => (age > 54 && handicap > 7) ? 'Senior' : 'Open');
+}
+//  ----------------------------------------------------------------
+
+
+function findNextSquare(sq) {
+  if ((sq**0.5)% 1===0) {
+    return (sq**0.5 +1)**2
+  } else {
+    return -1
+  }
+}
+
+
 // EXEC ----------------------------------------------------------------
 
-console.log(longest("xyaabbbccccdefww","xxxxyyyyabklmopq"));
+console.log(findNextSquare(120));
